@@ -1,0 +1,33 @@
+{
+  "main": "./src/app.js",
+  "type": "module",
+  "dependencies": {
+    "core-js": "^3.15.2"
+  },
+  "scripts": {
+    "mtest": "mocha ./test/mocha-tests/similarity.test.js"
+  },
+  "devDependencies": {
+    "assert": "^2.0.0"
+  },
+  "name": "@roxon3000/text-similarity",
+  "description": "Produces a similarity score for text blocks. 1-100.  If engine determines the string blocks are not adequate relative length to compare, it will return a -1.",
+  "version": "1.0.0",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/roxon3000/text-similarity.git"
+  },
+  "keywords": [
+    "text",
+    "similarity"
+  ],
+  "author": "Roxon3000 <jgooder@protonmail.com>",
+  "license": "GNUv3",
+  "bugs": {
+    "url": "https://github.com/roxon3000/text-similarity/issues"
+  },
+  "homepage": "https://github.com/roxon3000/text-similarity#readme"
+}
