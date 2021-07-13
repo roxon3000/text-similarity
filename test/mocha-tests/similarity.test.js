@@ -193,4 +193,15 @@ describe('Simularity Engine Test', () => {
 
     })
     
+    it('plagiarsm test', async () => {
+
+        var se = new SimilarityEngine()
+        var input = "Descartes has been heralded as the first modern philosopher. He is famous for having made an important connection between geometry and algebra, which allowed for the solving of geometrical problems by way of algebraic equations. He is also famous for having promoted a new conception of matter, which allowed for the accounting of physical phenomena by way of mechanical explanations. However, he is most famous for having written a relatively short work, Meditationes de Prima Philosophia (Meditations On First Philosophy), published in 1641, in which he provides a philosophical groundwork for the possibility of the sciences."
+        var target = "Descartes is famous for being the first modern philosopher. He promoted a new concept of matter which allowed for the accounting of physical phenomena by way of mechanical explanations and an important connection between geometry and algebra, which allowed for the solving of geometrical problems by way of algebraic equations. However, he is best known for having written Meditations On First Philosophy, published in 1641, in which he provides a philosophical groundwork for the possibility of the sciences."
+
+        var score = se.getSimilarityScore(input, target )
+        console.log("se.getSimilarityScore('" + input +  "," + target + "')=" + score)
+        assert.deepStrictEqual(score,88)
+
+    })
 })
