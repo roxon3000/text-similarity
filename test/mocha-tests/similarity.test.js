@@ -16,19 +16,6 @@ describe('Simularity Engine Test', () => {
 
     })
 
-    it('for paul', async () => {
-
-        var se = new SimilarityEngine()
-        var input = "paul babb jeff better donald trump"
-        var target = "joe biden jeff bezos paul mcartney"
-        
-        var score = se.getSimilarityScore(input, target)
-        console.log("se.getSimilarityScore('" + input +  "," + target + "')=" + score)
- 
-        assert.deepStrictEqual(score,38)
-
-    })
-
     it('test 1', async () => {
 
         var se = new SimilarityEngine()
