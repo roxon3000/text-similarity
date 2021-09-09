@@ -105,6 +105,7 @@ class SimilarityEngine {
             m1bArr.forEach( (el, index) => {
                 let matchEl = m2bArr.find( (arel) => {
                     let f = arel === el
+                    //only try suffix if first 3 chars are the same
                     let first3 = (arel.length > 2 && el.length > 2) ? (arel.substring(0,3) === el.substring(0,3)) : false
                     if(!f && first3){
                         //try suffixes
@@ -120,7 +121,8 @@ class SimilarityEngine {
  
 
                     }
-                    if(!f && first3){
+                    
+                    if(!f){
                         //try same same from mebrain
                         for(let mbx = 0; mbx < SAME_SAME.length; mbx++){
                             //el is found in a same-same array, test if arel equals any other of the same-sames

@@ -5,6 +5,7 @@
     "core-js": "^3.15.2"
   },
   "scripts": {
+    "isotest": "mocha ./test/mocha-tests/iso.test.js",
     "mtest": "mocha ./test/mocha-tests/similarity.test.js",
     "test": "mocha ./test/mocha-tests/similarity.test.js"
   },
