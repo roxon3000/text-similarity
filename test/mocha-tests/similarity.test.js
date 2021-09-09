@@ -38,12 +38,12 @@ describe('Simularity Engine Test', () => {
     it('funny 1', async () => {
 
         var se = new SimilarityEngine()
-        var input="pro-autocracy side"
+        var input= "pro-autocracy side"
         var target="pro-democracy side"
         var score = se.getSimilarityScore(input, target)
         console.log("se.getSimilarityScore('" + input +  "," + target + "')=" + score)
  
-        assert.deepStrictEqual(score,78)
+        assert.deepStrictEqual(score,83)
 
     })
     
@@ -201,6 +201,18 @@ describe('Simularity Engine Test', () => {
         var score = se.getSimilarityScore(input, target )
         console.log("se.getSimilarityScore('" + input +  "," + target + "')=" + score)
         assert.deepStrictEqual(score,100)
+
+    })
+
+    it('number test negative', async () => {
+
+        var se = new SimilarityEngine()
+        var input = "Back in 1974"
+        var target = "Back in one nine seven four"
+
+        var score = se.getSimilarityScore(input, target )
+        console.log("se.getSimilarityScore('" + input +  "," + target + "')=" + score)
+        assert.deepStrictEqual(score,49)
 
     })
 })

@@ -50,7 +50,7 @@ class SimilarityEngine {
         //use character match on non matching words
         var remInputString = wordScoreResults.remInputString
         var remTargetString = wordScoreResults.remTargetString
-        
+
         if(remInputString && remInputString.trim().length > 0 &&
             remTargetString && remTargetString.trim().length > 0 ) {
                 
@@ -58,7 +58,7 @@ class SimilarityEngine {
                 for(var csi = 15; csi > 3; csi--){
                     var charScore = 0
                     if(remTargetString.length > csi){
-                        var charMatchCountResult = this.getCharMatchScore(remInputString, remTargetString, csi, target.length)
+                        var charMatchCountResult = this.getCharMatchScore(remInputString, remTargetString, csi, input.length + target.length)
                         charScore = charMatchCountResult.charMatchScore
                         remTargetString = charMatchCountResult.remainingTarget
                         remInputString = charMatchCountResult.remainingInput
@@ -81,7 +81,7 @@ class SimilarityEngine {
         //score = (score > 100 ) ? 100 : score 
 
         //use straight matching percentage
-        score = matchingPercentage * 100
+       // score = matchingPercentage * 100
 
         return Math.round(score)
 
@@ -157,16 +157,13 @@ class SimilarityEngine {
         }
 
 
-        //var wordDiffAdj = Math.abs(inputWordCount - targetWordCount)/2
-        //removed wordScorTempCount, but leaving in code for now.  This was scoring too high when matching on small words        
-        //var wordScoreTempCount = (wordMatch * 2) / ((inputWordCount + targetWordCount) - wordDiffAdj)
-        var wordScoreTempLength = wordMatchLength / ((target.length + input.length)/ 2)
-        //use the higher value, matching as percentage words, or matching as a percentage of length
-        wordScore = wordScoreTempLength * 100
 
         //use character match on non matching words
         var remInputString = (inputNonMatch) ? inputNonMatch.join('') : ""
         var remTargetString = (targetNonMatch) ? targetNonMatch.join('') : ""
+
+        var wordScoreTempLength = 1- ((remInputString.length + remTargetString.length) / (target.length + input.length))
+        wordScore = wordScoreTempLength * 100
 
         return {
             "wordScore" : wordScore,
@@ -188,10 +185,10 @@ class SimilarityEngine {
         var remainingTarget = target
         var remainingInput = input
 
-        for(var index = 0; index < (input.length - numChars); index++) { 
+        for(var index = 0; index <= (input.length - numChars); index++) { 
 
             matchSequence = remainingInput.substring(index, index + numChars)
-            if(!matchSequence || matchSequence.length < 1 || index >= (remainingInput.length - numChars)){
+            if(!matchSequence || matchSequence.length < 1 || index > (remainingInput.length - numChars)){
                 break
             }
             
@@ -213,14 +210,8 @@ class SimilarityEngine {
             charMatchCount = matchMax
         }
 
-        var charMatchScore = (charMatchCount * numChars) / ((target.length + input.length)/ 2)
-
-        //experimental 
-        // give a premium to long char sequences
-        //if(charMatchScore > 0){
-        //    charMatchScore = charMatchScore + ((numChars*1.2)/100)
-        //}
-        
+        //var charMatchScore = (charMatchCount * numChars) / ((target.length + input.length)/ 2)
+        var charMatchScore = (charMatchCount * numChars) / (originalLength / 2)
         return {
             "charMatchScore" : charMatchScore,
             "remainingTarget" : remainingTarget,

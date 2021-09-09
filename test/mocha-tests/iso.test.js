@@ -3,15 +3,15 @@ import assert from 'assert'
 
 describe('Simularity Engine Test', () => {
     
-    it('number test', async () => {
+    it('funny 1', async () => {
 
         var se = new SimilarityEngine()
-        var input = "Give me one good reason"
-        var target = "Give me 1 good reason"
-
-        var score = se.getSimilarityScore(input, target )
+        var input= "pro-autocracy side"
+        var target="pro-democracy side"
+        var score = se.getSimilarityScore(input, target)
         console.log("se.getSimilarityScore('" + input +  "," + target + "')=" + score)
-        assert.deepStrictEqual(score,100)
+ 
+        assert.deepStrictEqual(score,83)
 
     })
 })
