@@ -7,14 +7,17 @@
   "scripts": {
     "isotest": "mocha ./test/mocha-tests/iso.test.js",
     "mtest": "mocha ./test/mocha-tests/similarity.test.js",
-    "test": "mocha ./test/mocha-tests/similarity.test.js"
+    "test": "mocha ./test/mocha-tests/similarity.test.js",
+    "build" : "babel src -d dist"
   },
   "devDependencies": {
-    "assert": "^2.0.0"
+    "assert": "^2.0.0",
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1"
   },
   "name": "@roxon3000/text-similarity",
   "description": "Produces a similarity score for text blocks. 1-100.  If engine determines the string blocks are not adequate relative length to compare, it will return a -1.",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "directories": {
     "test": "test"
   },
